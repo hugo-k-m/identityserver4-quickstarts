@@ -9,7 +9,7 @@ namespace IdentityServer
 {
     public static class Config
     {
-        public static IEnumerable<ApiScope> ApiScopes() =>
+        public static IEnumerable<ApiScope> ApiScopes =>
         new List<ApiScope>
         {
             new ApiScope("api1", "My API")
