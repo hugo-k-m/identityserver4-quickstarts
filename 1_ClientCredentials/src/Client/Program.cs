@@ -1,12 +1,23 @@
 ﻿using System;
+using System.Net.Http;
+using System.Threading.Tasks;
+using IdentityModel.Client;
 
 namespace Client
 {
     class Program
     {
-        static void Main(string[] args)
+        private static async Task Main()
         {
-            Console.WriteLine("Hello World!");
+            // discover endpoints from metadata
+            var client = new HttpClient();
+            var disco = await client.GetDiscoveryDocumentAsync("https://localhost:5001");
+
+            if (disco.IsError)
+            {
+                Console.WriteLine(disco.Error);
+                return;
+            }
         }
     }
 }
