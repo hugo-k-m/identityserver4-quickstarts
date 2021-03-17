@@ -34,6 +34,8 @@ namespace Client
                 Console.WriteLine(tokenResponse.IsError);
                 return;
             }
+
+            Console.WriteLine(tokenResponse.Json);
         }
     }
 }
