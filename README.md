@@ -6,6 +6,8 @@ The purpose of this repository is to track my implementation of these quickstart
 
 ## Protecting an API using Client Credentials
 
----
-
 This first quickstart is the most basic scenario for protecting APIs using IdentityServer. Here we define an API and a Client with which to access it. The client requests an access token from the Identity Server using its client ID and secret and then uses the token to gain access to the API.
+
+## Interactive Applications with ASP.NET Core
+
+This quickstart focusses on adding support for interactive user authentication via the OpenID Connect protocol to our IdentityServer. Once that's in place, we create an MVC application that uses IdentityServer for authentication.

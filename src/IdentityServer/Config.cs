@@ -2,7 +2,9 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
+using IdentityServer4;
 using IdentityServer4.Models;
+using System;
 using System.Collections.Generic;
 
 namespace IdentityServer
@@ -25,6 +27,7 @@ namespace IdentityServer
         public static IEnumerable<Client> Clients =>
         new List<Client>
         {
+            // machine to machine client
             new Client
             {
                 ClientId = "client",
@@ -40,6 +43,31 @@ namespace IdentityServer
 
                 // scopes that client has access to
                 AllowedScopes = { "api1" }
+            },
+
+            // interactive ASP.NET Core MVC client
+            new Client
+            {
+                ClientId = "mvc",
+
+                ClientSecrets =
+                {
+                    new Secret("secret".Sha256())
+                },
+
+                AllowedGrantTypes = GrantTypes.Code,
+
+                // where to redirect to after login
+                RedirectUris = { "https://localhost:5002/signin-oidc" },
+
+                // where to redirect to after logout
+                PostLogoutRedirectUris = { "https://localhost:5002/signout-callback-oidc" },
+
+                AllowedScopes = new List<String>
+                {
+                    IdentityServerConstants.StandardScopes.OpenId,
+                    IdentityServerConstants.StandardScopes.Profile
+                }
             }
         };
     }
