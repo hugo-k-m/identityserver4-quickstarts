@@ -2,9 +2,11 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
+using IdentityServer4;
 using IdentityServerHost.Quickstart.UI;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -12,10 +14,13 @@ namespace IdentityServer
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
         public IWebHostEnvironment Environment { get; }
 
-        public Startup(IWebHostEnvironment environment)
+        public Startup(IConfiguration configuration,
+            IWebHostEnvironment environment)
         {
+            Configuration = configuration;
             Environment = environment;
         }
 
@@ -32,6 +37,18 @@ namespace IdentityServer
 
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();
+
+            services.AddAuthentication()
+                .AddGoogle(options =>
+                {
+                    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+
+                    IConfigurationSection googleAuthNSection =
+                        Configuration.GetSection("Authentication:Google");
+
+                    options.ClientId = googleAuthNSection["ClientId"];
+                    options.ClientSecret = googleAuthNSection["ClientSecret"];
+                });
         }
 
         public void Configure(IApplicationBuilder app)
