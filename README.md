@@ -11,3 +11,7 @@ This first quickstart is the most basic scenario for protecting APIs using Ident
 ## Interactive Applications with ASP.NET Core
 
 This quickstart focusses on adding support for interactive user authentication via the OpenID Connect protocol to our IdentityServer. Once that's in place, we create an MVC application that uses IdentityServer for authentication.
+
+## ASP.NET Core and API access
+
+In this quickstart we will explore combining API access and user authentication.
