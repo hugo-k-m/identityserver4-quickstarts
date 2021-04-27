@@ -11,3 +11,7 @@ function log() {
         document.getElementById('results').innerHTML += msg + '\r\n';
     });
 }
+
+document.getElementById("login").addEventListener("click", login, false);
+document.getElementById("api").addEventListener("click", api, false);
+document.getElementById("logout").addEventListener("click", logout, false);
