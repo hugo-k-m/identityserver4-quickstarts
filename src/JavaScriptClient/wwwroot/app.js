@@ -34,3 +34,25 @@ mgr.getUser().then(function (user) {
         log("User not logged in");
     }
 });
+
+function login() {
+    mgr.signinRedirect();
+}
+
+function api() {
+    mgr.getUser().then(function (user) {
+        var url = "https://localhost:6001/identity";
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url);
+        xhr.onload = function () {
+            log(xhr.status, JSON.parse(xhr.responseText));
+        }
+        xhr.setRequestHeader("Authorization", "Bearer " + user.access_token);
+        xhr.send();
+    });
+}
+
+function logout() {
+    mgr.signoutRedirect();
+}
