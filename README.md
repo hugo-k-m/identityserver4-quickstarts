@@ -29,3 +29,9 @@ In this quickstart we will explore combining API access and user authentication.
 This quckstart demonstrates how to build a JavaScript client, otherwise know as a "Single Page Application" (or "SPA").
 
 Through this client the user will login to IdentityServer, invoke the web API with an access token issued by IdentityServer, and logout of IdentityServer.
+
+## Using EntityFramework Core for configuration and operational data
+
+---
+
+The goal of this quickstart is to move our data into a database that is persistent between restarts and across multiple IdentityServer instances. This includes configuration data, such as client and scope data, as well as IDS4 temporary data, such as authorization codes, consent choices, and refresh tokens.
