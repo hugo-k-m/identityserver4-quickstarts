@@ -36,7 +36,6 @@ namespace IdentityServer
             var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
             IConfigurationSection data = Configuration.GetSection("ConnectionString");
             string connectionString = data["IdentityServer"];
-            // string connectionString = @"Data " + connection;
 
             var builder = services.AddIdentityServer()
                 .AddDeveloperSigningCredential() //This is for dev only scenarios when you don’t have a certificate to use.
@@ -70,7 +69,7 @@ namespace IdentityServer
 
         public void Configure(IApplicationBuilder app)
         {
-            InitializeDatabase(app);
+            // InitializeDatabase(app);
 
             if (Environment.IsDevelopment())
             {
