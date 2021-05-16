@@ -35,3 +35,9 @@ Through this client the user will login to IdentityServer, invoke the web API wi
 ---
 
 The goal of this quickstart is to move our data into a database that is persistent between restarts and across multiple IdentityServer instances. This includes configuration data, such as client and scope data, as well as IDS4 temporary data, such as authorization codes, consent choices, and refresh tokens.
+
+## Using ASP.NET Core Identity
+
+---
+
+This quickstart shows how to use ASP.NET Core Identity with IdentityServer.
